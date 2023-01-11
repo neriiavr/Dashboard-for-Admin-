@@ -12,6 +12,11 @@ const initialState = {
 export const ContextProvider = ({ children }) => {
     // 2. then add the logic, the state of the app that the state will have 
     const [activeMenu, setActiveMenu] = useState(true);
+    const [isClicked, setIsClicked] = useState(initialState);
+
+    const handleClick = (clicked) => {
+        setIsClicked({...initialState, [clicked]: true});
+    } 
 
     return (
         /* StateContext.Provider has to have a value, value property is an object 
@@ -24,6 +29,9 @@ export const ContextProvider = ({ children }) => {
             value={{
                 activeMenu,
                 setActiveMenu,
+                isClicked,
+                setIsClicked,
+                handleClick
                 }}>
              {children}
         </StateContext.Provider>
