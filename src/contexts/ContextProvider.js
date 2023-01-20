@@ -13,6 +13,21 @@ export const ContextProvider = ({ children }) => {
     // 2. then add the logic, the state of the app that the state will have 
     const [activeMenu, setActiveMenu] = useState(true);
     const [isClicked, setIsClicked] = useState(initialState);
+    const [currentColor, setCurrentColor] = useState('#03C9D7');
+    const [currentMode, setCurrentMode] = useState('Light');
+    const [ThemeSettings, setThemeSettings] = useState(false);
+
+    const setMode = (e) => {
+        setCurrentMode(e.target.value);
+
+        localStorage.setItem('themeMode', e.target.value);
+    }
+
+    const setColor = (e) => {
+        setCurrentColor(e.target.value);
+
+        localStorage.setItem('colorMode', e.target.value);
+    }
 
     const handleClick = (clicked) => {
         setIsClicked({...initialState, [clicked]: true});
@@ -35,6 +50,9 @@ export const ContextProvider = ({ children }) => {
                 handleClick,
                 screenSize,
                 setScreenSize
+                currentColor, currentMode,
+                setCurrentColor, setCurrentMode,
+                ThemeSettings, setThemeSettings
                 }}>
              {children}
         </StateContext.Provider>
