@@ -72,7 +72,7 @@ const ThemeSettings = () => {
                     className='h-10 w-10 rounded-full cursor-pointer'
                     style={{ backgroundColor: item.color}}
                     onClick={setMode}
-                    checked={() => setColor(item.color)}
+                    checked={() => setColor(item.color) }
                     >
                     <BsCheck className={`ml-2 text-2xl text-white ${true ? 'block' : 'hidden'}`} />
                   </button>
